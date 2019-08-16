@@ -1,0 +1,87 @@
+<html><head>
+    <meta charset="UTF-8">
+    <title>Eucalyptus</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="author" content="Eucalyptus">
+    <meta name="description" content="We're building frictionless e-commerce brands in Australia.">
+    <meta name="keywords" content="keywords,here">
+
+    <meta property="og:url" content="http://eucalyptus.vc">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Eucalyptus">
+    <meta property="og:description" content="We're building frictionless e-commerce brands in Australia.">
+    <meta property="og:image" content="http://eucalyptus.vc/img/og.jpg">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" type="text/css">
+    <link rel="stylesheet" href="stylesheet.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script src="js/fetch.js"></script>
+    <script src="js/formdata.min.js"></script>
+    <script src="js/polyfill.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="ANALYTICS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-134413885-3');
+    </script>
+  </head>
+  <body>
+    <section>
+      <div class="footer">
+        <h2>
+          We're building frictionless<br>
+          e-commerce brands in Australia.
+        </h2>
+        <div class="capture">
+          <form name="submit-to-google-sheet">
+            <div class="field has-addons">
+              <div class="control">
+                <input class="input" name="email" type="email" placeholder="Leave your email to come along for the ride" required="">
+              </div>
+              <div class="control">
+                <button id="submitty" class="button" type="submit">
+                  OK
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- 
+      <h5>📍Sydney, Australia</h5>
+      --></div>
+    </section>
+    <script>
+      const scriptURL =
+        'G_SCRIPT';
+      const form = document.forms['submit-to-google-sheet'];
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        var btn = document.getElementById('submitty');
+        btn.classList.add('is-loading');
+        document.getElementById('submitty').disabled = true;
+
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+          .then(response => {
+            btn.classList.remove('is-loading');
+            document.getElementById('submitty').disabled = false;
+            btn.classList.add('is-done');
+            document.getElementById('submitty').textContent = 'Done!';
+            gtag('event', 'xyz');
+          })
+          .catch(error => console.error('Error!', error.message));
+      });
+    </script>
+  
+
+</body></html>
